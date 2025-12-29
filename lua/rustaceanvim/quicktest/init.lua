@@ -24,7 +24,6 @@
 
 local cargo = require('rustaceanvim.cargo')
 local config = require('rustaceanvim.config.internal')
-local trans = require('rustaceanvim.neotest.trans')
 local Job = require('plenary.job')
 
 ---@class QuicktestAdapter

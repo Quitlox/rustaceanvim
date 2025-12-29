@@ -1,5 +1,3 @@
-local trans = require('rustaceanvim.neotest.trans')
-
 ---@type rustaceanvim.TestExecutor
 ---@diagnostic disable-next-line: missing-fields
 local M = {}
