@@ -128,7 +128,7 @@ vim.g.rustaceanvim = vim.g.rustaceanvim
 
 ---@alias rustaceanvim.executor_alias 'termopen' | 'quickfix' | 'toggleterm' | 'vimux'
 
----@alias rustaceanvim.test_executor_alias rustaceanvim.executor_alias | 'background' | 'neotest'
+---@alias rustaceanvim.test_executor_alias rustaceanvim.executor_alias | 'background' | 'neotest' | 'quicktest'
 
 ---@class rustaceanvim.code-action.Opts
 ---
