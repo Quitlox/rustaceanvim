@@ -331,6 +331,38 @@ vim.keymap.set(
 
 <details>
   <summary>
+  <b>Quicktest integration</b>
+  </summary>
+
+  This plugin provides a [quicktest.nvim](https://github.com/quolpr/quicktest.nvim) adapter,
+  which you can add to quicktest as follows:
+
+  ```lua
+  require('quicktest').setup {
+      -- ...,
+      adapters = {
+        -- ...,
+        require('rustaceanvim.quicktest')
+      },
+  }
+  ```
+
+  The quicktest adapter uses rust-analyzer for test discovery and command construction,
+  similar to the neotest adapter.
+
+  Key features:
+  - **LSP-based discovery**: Uses rust-analyzer's `experimental/runnables` for test detection
+  - **Fast test execution**: Run tests directly from cursor position, file, directory, or entire workspace
+  - **Real-time output**: See test results immediately as they run
+  - **Flexible runner**: Supports both `cargo test` and `cargo-nextest`
+
+  If you configure rustaceanvim to use quicktest, the `tools.test_executor`
+  will default to using quicktest for `testables` and `runnables` that are tests.
+
+</details>
+
+<details>
+  <summary>
   <b>Expand macros recursively</b>
   </summary>
 
