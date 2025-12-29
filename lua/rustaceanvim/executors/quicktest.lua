@@ -10,9 +10,19 @@ M.execute_command = function(_, _, _, opts)
   opts = vim.tbl_deep_extend('force', { bufnr = 0 }, opts or {})
   if type(opts.runnable) ~= 'table' then
     vim.notify('rustaceanvim quicktest executor called without a runnable. This is a bug!', vim.log.levels.ERROR)
+    return
   end
-  local file = vim.api.nvim_buf_get_name(opts.bufnr)
-  local pos_id = trans.get_position_id(file, opts.runnable)
+  
+  -- Get the location from the runnable
+  local location = opts.runnable.location
+  if location then
+    -- Move cursor to the test location
+    local start_row = location.targetRange.start.line
+    local start_col = location.targetRange.start.character
+    vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
+  end
+  
+  -- Run quicktest at the current cursor position
   ---@diagnostic disable-next-line: undefined-field
   require('quicktest').run_line()
 end
