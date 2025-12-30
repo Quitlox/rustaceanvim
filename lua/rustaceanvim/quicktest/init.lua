@@ -252,11 +252,15 @@ function M.run(params, send)
     args = vim.list_extend(args, params.opts.additional_args)
   end
   
+  -- Merge runnable environment with system environment
+  -- This ensures commands like rustc are available in PATH
+  local job_env = vim.tbl_extend('force', vim.fn.environ(), env or {})
+  
   local job = Job:new({
     command = exe,
     args = args,
     cwd = cwd or params.cwd,
-    env = env,
+    env = job_env,
     on_stdout = function(_, data)
       send({ type = 'stdout', raw = data, output = data })
     end,
