@@ -6,6 +6,7 @@ Introduction ·································�
 plugin configuration ····································· |rustaceanvim.config|
 LSP configuration utility ························· |rustaceanvim.config.server|
  ························································ |rustaceanvim.neotest|
+ ······················································· |rustaceanvim.quicktest|
  ···························································· |rustaceanvim.dap|
 
 ==============================================================================
@@ -538,6 +539,32 @@ for test discovery and command construction.
 
 Note: If you use this adapter, do not add the neotest-rust adapter
 (another plugin).
+
+
+==============================================================================
+                                                        *rustaceanvim.quicktest*
+
+
+A |quicktest.nvim| adapter for rust, powered by rustaceanvim.
+
+If you add this to quicktest:
+
+>
+require('quicktest').setup {
+    -- ...,
+    adapters = {
+      -- ...,
+      require('rustaceanvim.quicktest')
+    },
+}
+<
+
+this plugin will configure itself to use |quicktest|
+as a test executor, and |quicktest| will use rust-analyzer
+for test discovery and command construction.
+
+The quicktest adapter provides fast, real-time test execution
+directly from your cursor position, file, directory, or entire workspace.
 
 
 ==============================================================================
